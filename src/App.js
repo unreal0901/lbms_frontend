@@ -1,5 +1,6 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
+import { CookiesProvider } from "react-cookie";
 // import Signup from "./components/SignupForm/Signup";
 import Login from "../src/components/Login/Login";
 import {
@@ -113,20 +114,22 @@ const router = createBrowserRouter(
 function App() {
   return (
     <ChakraProvider>
-      <RouterProvider router={router} />
-      <div id="modal-root"></div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <CookiesProvider>
+        <RouterProvider router={router} />
+        <div id="modal-root"></div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </CookiesProvider>
     </ChakraProvider>
   );
 }

@@ -10,12 +10,14 @@ const RequireUser = ({ children }) => {
   const [cookies] = useCookies(["logged_in"]);
   const user = useSelector(getUser)?.data;
 
+  console.log(user, cookies);
+
   if (isLoading || isFetching) {
     // Loading state, show loader
     return <FullScreenLoader />;
   }
 
-  if (cookies.logged_in && user) {
+  if (user) {
     // User is already logged in
     return children;
   } else return null;

@@ -10,7 +10,7 @@ const RequireUser = ({ children }) => {
   const [cookies] = useCookies(["logged_in"]);
   const user = useSelector(getUser)?.data;
 
-  console.log(user, cookies);
+  console.log(cookies);
 
   if (isLoading || isFetching) {
     // Loading state, show loader

@@ -2,16 +2,10 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
+
   Grid,
   GridItem,
   Image,
-  Skeleton,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";

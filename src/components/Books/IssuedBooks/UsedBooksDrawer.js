@@ -15,7 +15,6 @@ import {
   Tag,
 } from "@chakra-ui/react";
 import { format, parseISO } from "date-fns";
-import { toast } from "react-toastify";
 
 const UsedBooksDrawer = ({ Open, onClose, book }) => {
   const { book: bookData, issuedDate, returnDate, fineAmount } = book ?? {};
@@ -27,7 +26,6 @@ const UsedBooksDrawer = ({ Open, onClose, book }) => {
     author = "",
     publisher = "",
     pageCount = "",
-    publishedDate = "",
     description = "",
   } = bookData ?? {};
 

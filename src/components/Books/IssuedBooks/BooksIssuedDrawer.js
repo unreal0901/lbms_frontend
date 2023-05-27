@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -11,13 +11,10 @@ import {
   Image,
   Skeleton,
   Text,
-  useDisclosure,
   Tag,
 } from "@chakra-ui/react";
 import {
   format,
-  differenceInDays,
-  differenceInHours,
   differenceInMinutes,
   parseISO,
   differenceInBusinessDays,
@@ -37,7 +34,6 @@ const BooksIssuedDrawer = ({ Open, onClose, book }) => {
     author = "",
     publisher = "",
     pageCount = "",
-    publishedDate = "",
     description = "",
   } = bookData ?? {};
 

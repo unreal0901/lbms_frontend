@@ -1,6 +1,5 @@
 import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
 import { getUser } from "../../features/user/UserSlice";
 import { useGetMeQuery } from "../../services/api/UserApi";
 import FullScreenLoader from "../FullScreenLoader/FullScreenLoader";

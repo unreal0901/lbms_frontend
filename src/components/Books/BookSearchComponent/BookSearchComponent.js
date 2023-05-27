@@ -1,11 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Stack,
   Tab,
   TabList,
   TabPanel,

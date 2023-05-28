@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -73,10 +73,14 @@ const UserSearch = ({ handleSearch }) => {
 };
 
 const Students = () => {
-  const { isLoading, isFetching } = useGetAllStudentsQuery();
+  const { isLoading, isFetching, refetch } = useGetAllStudentsQuery();
   const students = useSelector(getStudents)?.data;
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [filteredStudents, setFilteredStudents] = useState([]);
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);

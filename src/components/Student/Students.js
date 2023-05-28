@@ -8,6 +8,7 @@ import {
   Avatar,
   Flex,
   Input,
+  Skeleton,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { useGetAllStudentsQuery } from "../../services/api/UserApi";
@@ -94,7 +95,16 @@ const Students = () => {
     setFilteredStudents(filtered);
   };
 
-  if (isLoading || isFetching) return <div>Loading...</div>;
+  if (isLoading || isFetching) {
+    // Show skeleton tiles while loading
+    return (
+      <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap="4">
+        {[1, 2, 3, 4, 5].map((index) => (
+          <Skeleton key={index} height="300px" />
+        ))}
+      </Grid>
+    );
+  }
 
   return (
     <>

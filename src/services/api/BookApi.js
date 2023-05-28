@@ -19,7 +19,6 @@ export const bookApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data);
           dispatch(setBooks(data?.data));
         } catch (error) {}
       },
@@ -36,7 +35,6 @@ export const bookApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data);
           dispatch(setStudentBook(data?.data));
         } catch (error) {}
       },
@@ -91,8 +89,6 @@ export const bookApi = createApi({
           searchUrl = "https://www.googleapis.com/books/v1/volumes?q=popular";
         }
 
-        console.log(searchUrl);
-
         return {
           url: searchUrl,
         };
@@ -131,7 +127,6 @@ export const bookApi = createApi({
         };
       },
       transformErrorResponse: (result) => {
-        console.log(result);
         return result.data?.message;
       },
       invalidatesTags: ["Book"],
@@ -145,7 +140,6 @@ export const bookApi = createApi({
         };
       },
       transformErrorResponse: (result) => {
-        console.log(result);
         return result.data?.message;
       },
       invalidatesTags: ["Book"],

@@ -34,7 +34,6 @@ const StudentRegister = ({ isDrawerOpen, handleDrawerClose }) => {
       fullName: values.fullName,
       email: values.email,
     };
-    console.log(payload);
     try {
       resetForm();
       await registerStudent(payload).unwrap();

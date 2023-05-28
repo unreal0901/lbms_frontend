@@ -22,7 +22,6 @@ import { getBookFromSearch } from "../../../features/books/BookSlice";
 const BookForm = () => {
   const bookFromSearch = useSelector(getBookFromSearch);
 
-  console.log(bookFromSearch);
   let {
     volumeInfo: {
       title = "",
@@ -36,8 +35,6 @@ const BookForm = () => {
       language = "",
     } = {},
   } = bookFromSearch ?? {};
-
-  console.log(title);
 
   const bookImage = imageLinks?.smallThumbnail || imageLinks?.thumbnail;
   const isbn1 = industryIdentifiers ? industryIdentifiers[0]?.identifier : "";
@@ -57,8 +54,6 @@ const BookForm = () => {
     language: language || "",
     numBooksAvailable: 1,
   };
-
-  console.log(initialValues);
 
   const [addBook, { isLoading, isSuccess }] = useAddBookMutation();
 
@@ -80,7 +75,6 @@ const BookForm = () => {
       language: values.language || "",
       numBooksAvailable: values.numBooksAvailable || 1,
     };
-    console.log(payload);
 
     try {
       resetForm();

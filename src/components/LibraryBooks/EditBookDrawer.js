@@ -43,8 +43,7 @@ const EditBookDrawer = ({ isDrawerOpen, closeDrawer, editBookData }) => {
     };
 
     try {
-      const { data } = await updateBook(payload).unwrap();
-      console.log("Book updated:", data);
+      await updateBook(payload).unwrap();
       toast.success(`${payload.title} updated`);
       setSubmitting(false);
       closeDrawer();
@@ -88,8 +87,6 @@ const EditBookDrawer = ({ isDrawerOpen, closeDrawer, editBookData }) => {
     language: language || "",
     numBooksAvailable: numBooksAvailable || 1,
   };
-  console.log(editBookData);
-  console.log(initialValues);
 
   return (
     <>

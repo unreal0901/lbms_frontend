@@ -25,7 +25,6 @@ const bookSlice = createSlice({
       state.issueBook = action.payload;
     }, // Add issueBook reducer
     setStudentBook: (state, action) => {
-      console.log(action);
       state.studentBook = action.payload;
     },
   },

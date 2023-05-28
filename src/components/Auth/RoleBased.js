@@ -6,7 +6,6 @@ import { useEffect } from "react";
 const RoleBased = ({ role, children }) => {
   const navigate = useNavigate();
   const user = useSelector(getUser)?.data;
-  console.log(role, user[0]);
 
   useEffect(() => {
     if (user?.[0] && user[0]?.role !== role) {

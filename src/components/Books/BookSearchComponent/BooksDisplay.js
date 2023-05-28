@@ -36,7 +36,6 @@ const BooksDisplay = ({ books }) => {
 
   const handleUploadClick = (event, book) => {
     event.stopPropagation(); // Prevent click event propagation
-    console.log("adding book to state");
     dispatch(setBook(book)); // Dispatch the action to add the book to Redux state
     toast("Added Book details to book form");
   };

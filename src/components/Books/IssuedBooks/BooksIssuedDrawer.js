@@ -71,14 +71,12 @@ const BooksIssuedDrawer = ({ Open, onClose, book }) => {
     const currentDate = new Date();
     const parsedReturnDate = parseISO(returnDate);
     const timeDifference = differenceInMinutes(parsedReturnDate, currentDate);
-    console.log(timeDifference);
     if (timeDifference <= 0) {
       const timeDifferenceInDays = differenceInBusinessDays(
         parsedReturnDate,
         currentDate
       );
-      const fine = Math.abs(timeDifferenceInDays) * 10; // Assuming a fine of 0.1 per minute
-      console.log(fine);
+      const fine = Math.abs(timeDifferenceInDays) * 1;
       setFineAmount(fine);
       setTimeLeft(null);
     } else {

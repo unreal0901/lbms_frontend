@@ -12,11 +12,9 @@ export const userSlice = createSlice({
     logOut: () => initialState,
     setUser: (state, action) => {
       state.user = action.payload;
-      console.log(state);
     },
     setStudents: (state, action) => {
       state.students = action.payload;
-      console.log(state);
     },
   },
 });

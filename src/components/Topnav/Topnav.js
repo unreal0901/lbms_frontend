@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../assets/Logo.png";
 import { useSelector } from "react-redux";
 import { getUser } from "../../features/user/UserSlice";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import ProfileImg from "../../assets/profilePic.png";
 import { useLogoutUserMutation } from "../../services/api/AuthApi";
 
 const Topnav = () => {
   const user = useSelector(getUser).data[0];
   const [logout] = useLogoutUserMutation();
-  console.log(user);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileMenuRef = useRef(null);
@@ -123,44 +122,66 @@ const Topnav = () => {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   {/* Current: "bg-[#B285FF] text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                  <a
-                    href="#!"
-                    className="bg-[#B285FF] text-white rounded-md px-3 py-2 text-sm font-medium"
-                    aria-current="page"
+                  <NavLink
+                    to="dashboard"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                        : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    }
+                    activeClassName="bg-[#B285FF]"
+                    exact
                   >
                     Dashboard
-                  </a>
+                  </NavLink>
                   {user.role === "admin" ? (
-                    <Link
+                    <NavLink
                       to="students"
-                      className="text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      exact
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                          : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      }
                     >
                       Students
-                    </Link>
+                    </NavLink>
                   ) : null}
 
                   {user.role === "admin" ? (
-                    <Link
+                    <NavLink
                       to="add-books"
-                      className="text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                          : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      }
                     >
                       Add Books
-                    </Link>
+                    </NavLink>
                   ) : null}
 
-                  <Link
+                  <NavLink
                     to="books"
-                    className="text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                        : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    }
                   >
                     Books
-                  </Link>
+                  </NavLink>
                   {user.role === "user" ? (
-                    <Link
+                    <NavLink
                       to="issuedBooks"
-                      className="text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                          : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      }
                     >
                       Issued Books
-                    </Link>
+                    </NavLink>
                   ) : null}
                 </div>
               </div>
@@ -257,45 +278,70 @@ const Topnav = () => {
           } relative`}
           id="mobile-menu"
         >
-          <div className="space-y-1 px-2 pb-3 pt-2 absolute bg-[#805AD5]  w-full">
+          <div className="space-y-1 px-2 pb-3 pt-2 absolute bg-[#805AD5]  w-full flex flex-col align-middle">
             {/* Current: "bg-[#B285FF] text-white", Default: "text-gray-300 hover:bg-[#B285FF] hover:text-white" */}
-            <Link
+            <NavLink
               to="dashboard"
-              className="bg-[#B285FF] text-white block rounded-md px-3 py-2 text-base font-medium"
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-4 decoration-3 text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                  : " text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+              }
               aria-current="page"
+              onClick={toggleMobileMenu}
             >
               Dashboard
-            </Link>
+            </NavLink>
             {user.role === "admin" ? (
-              <Link
+              <NavLink
                 to="add-books"
-                className="bg-[#B285FF] text-white block rounded-md px-3 py-2 text-base font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "underline underline-offset-4 decoration-3 text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                    : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                }
                 aria-current="page"
+                onClick={toggleMobileMenu}
               >
                 Add Books
-              </Link>
+              </NavLink>
             ) : null}
             {user.role === "admin" ? (
-              <Link
+              <NavLink
                 to="students"
-                className="text-gray-300 hover:bg-[#B285FF] hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "underline underline-offset-4 decoration-3 text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                    : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                }
+                onClick={toggleMobileMenu}
               >
                 Students
-              </Link>
+              </NavLink>
             ) : null}
-            <Link
-              to="add-books"
-              className="text-gray-300 hover:bg-[#B285FF] hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            <NavLink
+              to="books"
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-4 decoration-3 text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                  : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+              }
+              onClick={toggleMobileMenu}
             >
               Books
-            </Link>
+            </NavLink>
             {user.role === "user" ? (
-              <Link
+              <NavLink
                 to="issuedBooks"
-                className="text-gray-300 hover:bg-[#B285FF] hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                className={({ isActive }) =>
+                  isActive
+                    ? "underline underline-offset-4 decoration-3 text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                    : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                }
+                onClick={toggleMobileMenu}
               >
                 Issued Books
-              </Link>
+              </NavLink>
             ) : null}
           </div>
         </div>

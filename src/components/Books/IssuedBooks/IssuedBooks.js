@@ -26,8 +26,6 @@ const IssuedBooks = () => {
   const studentBooks = useSelector(getStudentBook);
   const [selectedBook, setSelectedBook] = useState(null);
 
-  console.log(studentBooks);
-
   const handleShowMore = (book) => {
     setSelectedBook(book);
     onOpen();

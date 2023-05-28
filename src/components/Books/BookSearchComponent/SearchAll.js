@@ -30,7 +30,6 @@ const SearchAll = () => {
         duration: 3000,
         isClosable: true,
       });
-      console.log(data.items);
     }
   }, [isSuccess, toast, data]);
 
@@ -42,7 +41,6 @@ const SearchAll = () => {
         author: author || "",
         isbn: isbn || "",
       };
-      console.log(payload);
       setPayload({ ...payload });
     } catch (error) {
       console.log("An error occurred during login:", error);

@@ -106,6 +106,7 @@ const StudentRegister = ({ isDrawerOpen, handleDrawerClose }) => {
                         >
                           <FormLabel htmlFor="fullName">Full Name</FormLabel>
                           <Input
+                            isDisabled={isLoading}
                             focusBorderColor="#805AD5"
                             {...field}
                             id="fullName"
@@ -138,6 +139,7 @@ const StudentRegister = ({ isDrawerOpen, handleDrawerClose }) => {
                         >
                           <FormLabel htmlFor="email">Email</FormLabel>
                           <Input
+                            isDisabled={isLoading}
                             focusBorderColor="#805AD5"
                             {...field}
                             id="email"

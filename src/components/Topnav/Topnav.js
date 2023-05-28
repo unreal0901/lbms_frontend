@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../assets/Logo.png";
 import { useSelector } from "react-redux";
 import { getUser } from "../../features/user/UserSlice";
-import { NavLink, Outlet } from "react-router-dom";
-import ProfileImg from "../../assets/profilePic.png";
+import { Link, NavLink, Outlet } from "react-router-dom";
+// import ProfileImg from "../../assets/profilePic.png";
 import { useLogoutUserMutation } from "../../services/api/AuthApi";
+import { Avatar } from "@chakra-ui/react";
 
 const Topnav = () => {
   const user = useSelector(getUser).data[0];
@@ -129,15 +130,12 @@ const Topnav = () => {
                         ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                         : "text-gray-300 hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                     }
-                    activeClassName="bg-[#B285FF]"
-                    exact
                   >
                     Dashboard
                   </NavLink>
                   {user.role === "admin" ? (
                     <NavLink
                       to="students"
-                      exact
                       className={({ isActive }) =>
                         isActive
                           ? "bg-[#B285FF] text-white hover:bg-[#B285FF] hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -208,13 +206,18 @@ const Topnav = () => {
                     onClick={toggleProfileDropdown}
                   >
                     <span className="sr-only">Open user menu</span>
-                    <img
+                    <Avatar
+                      name={user?.fullName}
+                      size="sm"
+                      backgroundColor="orange"
+                    />
+                    {/* <img
                       className="h-8 w-8 rounded-full"
                       src={
                         user.photo !== "default.png" ? user.photo : ProfileImg
                       }
                       alt=""
-                    />
+                    /> */}
                   </button>
                 </div>
                 {/*
@@ -237,15 +240,15 @@ const Topnav = () => {
                     tabIndex={-1}
                   >
                     {/* Active: "bg-gray-100", Not Active: "" */}
-                    <a
-                      href="#!"
+                    <Link
+                      to="profile"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabIndex={-1}
                       id="user-menu-item-0"
                     >
                       Your Profile
-                    </a>
+                    </Link>
                     <a
                       href="#!"
                       className="block px-4 py-2 text-sm text-gray-700"

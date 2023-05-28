@@ -20,13 +20,14 @@ import Topnav from "../src/components/Topnav/Topnav";
 
 import { ChakraProvider } from "@chakra-ui/react";
 // import theme from "./theme";
-import Profile from "../src/components/Profile/Profile";
-import Dashboard from "../src/components/Dashboard/Dashboard";
 import Books from "./components/Books/Books";
 import LibraryBooks from "./components/LibraryBooks/LibraryBooks";
 import Students from "./components/Student/Students";
 import RoleBased from "./components/Auth/RoleBased";
 import IssuedBooks from "./components/Books/IssuedBooks/IssuedBooks";
+import ProfilePage from "./components/Dashboard/ProfilePage";
+import SideNav from "./components/Dashboard/SideNav";
+import ResetPass from "./components/Dashboard/ResetPass";
 // import Editors from "./Editors";
 
 const router = createBrowserRouter(
@@ -45,14 +46,22 @@ const router = createBrowserRouter(
           </RequireUser>
         }
       >
+        <Route index element={<ProfilePage />} />
+
+        <Route path="profile" element={<ProfilePage />} />
+
         <Route
           path="dashboard"
           element={
             <RequireUser>
-              <Dashboard />
+              <SideNav />
             </RequireUser>
           }
-        />
+        >
+          <Route index element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="reset-password" element={<ResetPass />} />
+        </Route>
 
         <Route
           path="add-books"
@@ -92,15 +101,6 @@ const router = createBrowserRouter(
               <RoleBased role="user">
                 <IssuedBooks />
               </RoleBased>
-            </RequireUser>
-          }
-        />
-
-        <Route
-          index
-          element={
-            <RequireUser>
-              <Profile />
             </RequireUser>
           }
         />

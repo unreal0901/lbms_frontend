@@ -80,6 +80,7 @@ const Login = () => {
         >
           {isLoading && (
             <div
+              className="z-[10]"
               style={{
                 position: "absolute",
                 top: "50%",
